@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/pages/intro_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -10,6 +11,11 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return Material();
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      themeMode: ThemeMode.light,
+      theme: ThemeData(canvasColor: Colors.grey[300]),
+      home: IntroPage(),
+    );
   }
 }
