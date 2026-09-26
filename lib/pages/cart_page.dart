@@ -1,4 +1,6 @@
+import 'package:e_commerce_app/components/cart_item.dart';
 import 'package:e_commerce_app/models/cart.dart';
+import 'package:e_commerce_app/models/shoe.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -14,19 +16,27 @@ class _CartPageState extends State<CartPage> {
   Widget build(BuildContext context) {
     return Consumer<Cart>(
       builder: (context, value, child) => Padding(
-        padding: const EdgeInsets.all(25),
+        padding: const EdgeInsets.symmetric(horizontal: 30),
         child: Column(
+          crossAxisAlignment: .start,
           children: [
             const Text(
               "My Cart",
               style: TextStyle(fontWeight: .bold, fontSize: 24),
             ),
             const SizedBox(height: 20),
-            Expanded(child: ListView.builder(itemBuilder: (context, index) {
-              //get individual shoe 
+            Expanded(
+              child: ListView.builder(
+                itemCount: value.getUserCart().length,
+                itemBuilder: (context, index) {
+                  //get individual shoe
+                  Shoe individualShoe = value.getUserCart()[index];
 
-              //return the cart item
-            },))
+                  //return the cart item
+                  return CartItem(shoe: individualShoe);
+                },
+              ),
+            ),
           ],
         ),
       ),
